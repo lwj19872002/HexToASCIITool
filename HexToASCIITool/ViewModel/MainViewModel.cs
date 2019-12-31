@@ -68,7 +68,7 @@ namespace HexToASCIITool.ViewModel
             ////{
             ////    // Code runs "for real"
             ////}
-            NotifyMsg = "Example: 0x47 0x4b or 47 4b or 0x47,0x4b or 47,4b\nHex number only.";
+            NotifyMsg = "格式: 0x47 0x4b or 47 4b or 0x47,0x4b or 47,4b\n不可解析字符用'$'标识，'$'字符的hex值为:0x24。";
             DebugMsg = "";
 
             InputStr = "";

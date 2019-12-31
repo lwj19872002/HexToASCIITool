@@ -15,7 +15,7 @@ namespace HexToASCIITool
             string str = value as string;
 
             char[] splitChars = { ' ', ',' };
-            string[] strs = str.Split(splitChars);
+            string[] strs = str.Split(splitChars, StringSplitOptions.RemoveEmptyEntries);
 
             string ret = "";
             foreach (var item in strs)
@@ -32,14 +32,13 @@ namespace HexToASCIITool
                     }
                     else
                     {
-                        ret += "*";
+                        ret += "$";
                     }
                 }
                 catch
                 {
-                    ret += "*";
+                    ret += "$";
                 }
-                ret += " ";
             }
 
             return ret;
@@ -47,7 +46,17 @@ namespace HexToASCIITool
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value;
+            string str = value as string;
+
+            char[] chars = str.ToCharArray();
+
+            string ret = "";
+            foreach (var item in chars)
+            {
+                ret += string.Format("0x{0:X02} ", (int)item);
+            }
+
+            return ret;
         }
     }
 }
